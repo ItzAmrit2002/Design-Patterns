@@ -2,11 +2,14 @@ package BuilderPattern;
 
 public class Dog {
     
+
     private String breed;
     private String color;
     private int age;
     private String name;
 
+
+    // Constructor for Dog class which takes DogBuilder object as input and sets the attributes of Dog class based on the values set by the client in DogBuilder object.
     public Dog(DogBuilder builder) {
         this.breed = builder.breed;
         this.color = builder.color;
@@ -29,7 +32,8 @@ public class Dog {
     public String getName() {
         return name;
     }
-
+    
+    // private functions that can't be exposed to clients as these attributes are immutable and only set once
     private void setBreed(String breed){
         this.breed = breed;
     }
@@ -45,6 +49,10 @@ public class Dog {
     private void setName(String name){
         this.name = name;
     }
+
+    // Builder class for Dog class to create Dog objects with attributes based on the client's choice, which to set and which to not. Once object is created, it can't be modified.
+
+    //Builder class is made static so that it can be accessed without creating an object of Dog class by the client.
 
     public static class DogBuilder {
         private String breed;
